@@ -15,7 +15,7 @@ pipeline {
         }
         stage('e2e Tests') {
             steps {
-                bat 'npm run cypress'
+                bat 'npm run cy:run'
             }
         }
         stage('Deploy') {

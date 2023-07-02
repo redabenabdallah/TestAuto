@@ -6,6 +6,7 @@ module.exports = defineConfig({
     defaultCommandTimeout: 25000,
     screenshotOnRunFailure: false,
     numTestsKeptInMemory: 0,
+	pageLoadTimeout: 120000,
     env: {
         monEnvironnement: 'local',
     },
