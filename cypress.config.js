@@ -7,6 +7,10 @@ module.exports = defineConfig({
     screenshotOnRunFailure: false,
     numTestsKeptInMemory: 0,
 	pageLoadTimeout: 120000,
+	reporter: 'junit',
+    reporterOptions: {
+    mochaFile: 'results/my-test-output.xml'
+    },
     env: {
         monEnvironnement: 'local',
     },
