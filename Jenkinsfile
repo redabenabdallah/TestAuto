@@ -3,10 +3,6 @@ pipeline {
 
     tools {nodejs "Node12"}
 
-    environment {
-        CHROME_BIN = '/bin/google-chrome'
-    }
-
     stages {
         stage('Dependencies') {
             steps {
@@ -15,6 +11,7 @@ pipeline {
         }
         stage('e2e Tests') {
             steps {
+                bat 'set CYPRESS_VERIFY_TIMEOUT=120000'
                 bat 'npm run cy:run'
             }
         }
@@ -24,4 +21,9 @@ pipeline {
             }
         }
     }
+    post {
+    always {
+        junit '**/results/*.xml'
+           }
+   }
 }
