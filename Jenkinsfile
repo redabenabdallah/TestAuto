@@ -13,6 +13,14 @@ pipeline {
             steps {
                 bat 'set CYPRESS_VERIFY_TIMEOUT=120000'
                 bat 'npm run cy:run'
+				publishHTML([
+					allowMissing: false,
+					alwaysLinkToLastBuild: false,
+					keepAll: true,
+					reportDir: 'cypress/reports/html',
+					reportFiles: 'index.html',
+					reportName: 'HTML Report', 
+					reportTitles: ''])
             }
         }
         stage('Deploy') {
@@ -21,9 +29,9 @@ pipeline {
             }
         }
     }
-    post {
-    always {
-        junit '**/results/*.xml'
-           }
-   }
+    //post {
+    //always {
+      //  junit '**/results/*.xml'
+        //   }
+   //}
 }

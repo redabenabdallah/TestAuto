@@ -15,5 +15,6 @@ module.exports = async (on, config) => {
             plugins: [nodePolyfills(), createEsbuildPlugin(config)],
         })
     )
+	require('cypress-mochawesome-reporter/plugin')(on);
     return config
 }

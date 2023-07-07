@@ -7,10 +7,14 @@ module.exports = defineConfig({
     screenshotOnRunFailure: false,
     numTestsKeptInMemory: 0,
 	pageLoadTimeout: 120000,
-	reporter: 'junit',
-    reporterOptions: {
-    mochaFile: 'results/my-test-output.xml'
-    },
+   "reporter": "cypress-mochawesome-reporter",
+   "reporterOptions": {
+    "reportDir": "cypress/reports",
+    "charts": true,
+    "reportPageTitle": "My Test Suite",
+    "embeddedScreenshots": true,
+    "inlineAssets": true
+  },
     env: {
         monEnvironnement: 'local',
     },

@@ -1,8 +1,9 @@
 {
   "scripts": {
-   "cy:open": "cypress open",
-   "cy:run": "cypress run",
-   "cy:spec": "cypress run --spec"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:runParallel": "cypress run --parallel",
+    "cy:spec": "cypress run --spec"
   },
   "name": "TestCypress",
   "version": "1.0.0",
@@ -20,5 +21,8 @@
       "filePrefix": "",
       "fileSuffix": ".cucumber"
     }
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.5.1"
   }
 }
