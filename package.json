@@ -3,7 +3,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:runParallel": "cypress run --parallel",
-    "cy:spec": "cypress run --spec"
+    "cy:spec": "cypress run --spec cypress/e2e/features/testWS.feature"
   },
   "name": "TestCypress",
   "version": "1.0.0",
