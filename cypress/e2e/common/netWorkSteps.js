@@ -15,3 +15,7 @@ Then(/^La réponse est conforme au fichier json (.*)/, (responseExpected) => {
     netWorkPo.checkResponse(responseExpected)
 });
 
+Then(/^Le statut de la réponse est (\d+)/, (statutResponseExpected) => {
+    netWorkPo.checkResponseStatut(statutResponseExpected)
+});
+

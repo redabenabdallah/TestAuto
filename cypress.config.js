@@ -4,7 +4,7 @@ module.exports = defineConfig({
     chromeWebSecurity: false,
     video: false,
     defaultCommandTimeout: 25000,
-    screenshotOnRunFailure: false,
+    screenshotOnRunFailure: true,
     numTestsKeptInMemory: 4,
 	pageLoadTimeout: 120000,
    "reporter": "cypress-mochawesome-reporter",
