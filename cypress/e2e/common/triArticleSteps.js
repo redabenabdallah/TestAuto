@@ -8,7 +8,7 @@ When(/^Je trie les articles suivant le libellé décroissant/, () => {
 });
 
 Then(/^Les articles sont triés par libellé décroissant/, (nbItem) => {
-    articlePo.verifTriPanier('libellé' ,'dsc')
+    articlePo.verifTriListeArticle('libellé' ,'dsc')
 });
 
 When(/^Je trie les articles suivant le prix croissant/, () => {
@@ -16,6 +16,6 @@ When(/^Je trie les articles suivant le prix croissant/, () => {
 });
 
 Then(/^Les articles sont triés par prix croissant/, (nbItem) => {
-    articlePo.verifTriPanier('prix' ,'asc')
+    articlePo.verifTriListeArticle('prix' ,'asc')
 });
 

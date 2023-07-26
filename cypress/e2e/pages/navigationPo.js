@@ -1,16 +1,20 @@
+import {PageLogin} from "../../webElements/pageLogin";
+
 export class NavigationPo {
+
+    pageLogin = new PageLogin()
 
     goToPage() {
         cy.visit('https://www.saucedemo.com/')
     }
 
     loginTo(userName, pwd) {
-        cy.get('#user-name').clear().type(userName)
-        cy.get('#password').clear().type(pwd)
+        cy.get(this.pageLogin.loginInput).clear().type(userName)
+        cy.get(this.pageLogin.pwdInput).clear().type(pwd)
     }
 
     clickLogin(){
-        cy.get('#login-button').click()
+        cy.get(this.pageLogin.loginBtn).click()
     }
 
     verifConnected(){
