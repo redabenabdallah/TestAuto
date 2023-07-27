@@ -23,7 +23,7 @@ export class ArticlesPo {
     }
 
     triArticleVisu(critere, ordre) {
-        let identifiantFiltre =''
+        let identifiantFiltre = ''
         switch (critere) {
             case 'libellé': {
                 identifiantFiltre = ordre === 'dsc' ? 'Name (Z to A)' : 'Name (A to Z)'
@@ -39,12 +39,35 @@ export class ArticlesPo {
     }
 
     verifTriListeArticle(critere, ordre) {
-        const classElm = critere === 'libellé' ? this.pageArticles.elmTitreArticle: this.pageArticles.elmPrix
+        const classElm = critere === 'libellé' ? this.pageArticles.elmTitreArticle : this.pageArticles.elmPrix
         const listeTextArticle = new Array()
         cy.get(classElm).each((article) => {
             listeTextArticle.push(article.text())
         }).wrap((listeTextArticle)).should((listeTextArticle) => {
             expect(ordre === 'dsc' ? listeTextArticle.reverse() : listeTextArticle.sort()).to.equals(listeTextArticle)
+        })
+    }
+
+    removeItem() {
+        this.triArticleVisu('prix', 'asc')
+        cy.get('body').find(this.pageArticles.elmPrix).last().next('button').click()
+    }
+
+    checkPanier() {
+        cy.get(this.pageArticles.elmVisuPanier).click()
+        cy.url().then((monUrl) => {
+            expect(monUrl).to.equals('https://www.saucedemo.com/cart.html')
+        })
+    }
+
+    checkPrixItemPanier() {
+        cy.get(this.pageArticles.elmPrix).should('have.text', '$7.99')
+    }
+
+    checkoutPanier() {
+        cy.get(this.pageArticles.elmCheckoutBtn).click()
+        cy.url().then((monUrl) => {
+            expect(monUrl).to.equals('https://www.saucedemo.com/checkout-step-one.html')
         })
     }
 }
