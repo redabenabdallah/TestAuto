@@ -4,8 +4,8 @@ export class NavigationPo {
 
     pageLogin = new PageLogin()
 
-    goToPage() {
-        cy.visit('https://www.saucedemo.com/')
+    goToPage(urlPge) {
+        cy.visit(urlPge)
     }
 
     loginTo(userName, pwd) {

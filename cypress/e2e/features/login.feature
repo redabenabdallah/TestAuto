@@ -2,7 +2,7 @@
 Fonctionnalité:  Login
 
   Scénario: Je me connecte
-    Etant donné a standard account
+    Etant donné Je suis sur la home page d'accueil https://www.saucedemo.com/
     Quand Je mets username standard_user et password secret_sauce dans le formulaire
     Quand Je clique sur le bouton login
     Alors Je suis connecté

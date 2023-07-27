@@ -20,7 +20,7 @@ When(/^go to checkout page/, () => {
 });
 
 Then(/^I should have only Item total equal the lowest cost item/, () => {
-    articlePo.checkPrixItemPanier()
+    articlePo.checkPrixItemPanier(0)
 });
 
 Then(/^I can “Finished” the checkout/, () => {

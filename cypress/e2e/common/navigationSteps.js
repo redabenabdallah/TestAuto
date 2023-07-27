@@ -3,7 +3,7 @@ import {NavigationPo} from "../pages/navigationPo";
 
 const navigationPo = new NavigationPo()
 
-When(/^Je suis sur la home page d'accueil/, () => {
-    navigationPo.goToPage()
+When(/^Je suis sur la home page d'accueil (.*)/, (urlPge) => {
+    navigationPo.goToPage(urlPge)
 });
 

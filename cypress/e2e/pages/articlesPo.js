@@ -1,20 +1,22 @@
 import {PageArticles} from "../../webElements/pageArticles";
+import {DataSet} from "../../dataVariables/DataSet";
 
 export class ArticlesPo {
 
     pageArticles = new PageArticles()
+    dataSet = new DataSet()
 
     chooseArticleMaxMin() {
         const listeItemPrix = new Array()
         cy.get('body').find(this.pageArticles.elmPrix).each((item) => {
             listeItemPrix.push(parseFloat(item.text().replace("$", "").trimEnd().trimStart()))
         }).wrap(listeItemPrix).then((listeItemPrix) => {
-            cy.get('body').find(this.pageArticles.elmPrix).contains(listeItemPrix.sort(function (a, b) {
+            let listSortPrix = listeItemPrix.sort(function (a, b) {
                 return a - b
-            }).at(0)).eq(0).next('button').click()
-            cy.get('body').find(this.pageArticles.elmPrix).contains(listeItemPrix.sort(function (a, b) {
-                return a - b
-            }).at(listeItemPrix.length - 1)).eq(0).next('button').click()
+            })
+            this.dataSet.listSortPrix = listSortPrix
+            cy.get('body').find(this.pageArticles.elmPrix).contains(listSortPrix.at(0)).eq(0).next('button').click()
+            cy.get('body').find(this.pageArticles.elmPrix).contains(listSortPrix.at(listeItemPrix.length - 1)).eq(0).next('button').click()
         })
     }
 
@@ -60,8 +62,8 @@ export class ArticlesPo {
         })
     }
 
-    checkPrixItemPanier() {
-        cy.get(this.pageArticles.elmPrix).should('have.text', '$7.99')
+    checkPrixItemPanier(indexListe) {
+        cy.get(this.pageArticles.elmPrix).should('have.text', '$' + this.dataSet.listSortPrix.at(indexListe))
     }
 
     checkoutPanier() {
